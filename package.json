@@ -1,0 +1,27 @@
+{
+  "name": "e-commerce",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MitaliSahu04/E-Commerce_Backend.git"
+  },
+  "author": "Mitali Sahu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MitaliSahu04/E-Commerce_Backend/issues"
+  },
+  "homepage": "https://github.com/MitaliSahu04/E-Commerce_Backend#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.7.3",
+    "nodemon": "^3.1.14"
+  }
+}
