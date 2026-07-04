@@ -1,7 +1,17 @@
 import mongoose from "mongoose";
 
-const registrationSchema = mongoose.Schema(
+const userSchema = mongoose.Schema(
   {
+    firstName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     email: {
       type: String,
       required: [true, "Email is required"],
@@ -13,13 +23,18 @@ const registrationSchema = mongoose.Schema(
       required: [true, "Password is required"],
       unique: true,
     },
+    custGuId: {
+      type: String,
+      unique: true,
+      required: true,
+    }
   },
   {
     timestamptimestamps: true,
   },
 );
 
-export const registrationModel = mongoose.Schema(
-  "registrationModel",
-  registrationSchema,
+export const userModel = mongoose.model(
+  "userModel",
+  userSchema,
 );
