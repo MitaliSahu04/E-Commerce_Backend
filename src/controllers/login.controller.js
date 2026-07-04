@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export const functionName = async (req, res) => {
+export const login = async (req, res) => {
 
       try{
         const {name,email} = req.body
