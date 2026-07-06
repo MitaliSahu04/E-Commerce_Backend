@@ -21,7 +21,6 @@ const userSchema = mongoose.Schema(
     password: {
       type: String,
       required: [true, "Password is required"],
-      unique: true,
     },
     custGuId: {
       type: String,
@@ -30,7 +29,7 @@ const userSchema = mongoose.Schema(
     }
   },
   {
-    timestamptimestamps: true,
+    timestamps: true,
   },
 );
 

@@ -1,13 +1,14 @@
-import {userModel} from "../models/userModel.js";
+import { userModel } from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from "uuid";
+import jwt from "jsonwebtoken";
 
-export const registerControlller = async (req, res) => {
+export const registerController = async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body;
 
     // Required Fields Validation
-    if (!firstName || !lastName || !email || !password ) {
+    if (!firstName || !lastName || !email || !password) {
       return res.status(400).json({
         success: false,
         message: "All fields are required.",
@@ -59,10 +60,25 @@ export const registerControlller = async (req, res) => {
       password: hashedPassword,
     });
 
+    const token = jwt.sign(
+      {
+        id: user._id,
+        custGuId: user.custGuId,
+        email: user.email,
+      },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: process.env.JWT_EXPIRES_IN || "7d",
+      },
+    );
+
     return res.status(201).json({
       success: true,
       message: "Registration successful.",
+      token,
+      tokenType: "Bearer",
       data: {
+        id: user._id,
         custGuId: user.custGuId,
         firstName: user.firstName,
         lastName: user.lastName,
